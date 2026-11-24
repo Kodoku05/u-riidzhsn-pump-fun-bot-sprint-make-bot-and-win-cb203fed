@@ -41,16 +41,47 @@ The real competition kit arrived during this session. Its dev dataset is a
 10 SOL. The external screening runner loads every part; the kit's pilot loader
 alone reads only the first part.
 
-The final screened configuration's fast simulation produced −0.200779582 SOL,
-206 fills across 53 coins, 103 round trips, 39 winning trips, 2.8033% maximum
-drawdown, four rejected orders, and three failed transactions. Removing its best
-coin leaves −0.297433620 SOL. Authoritative replay and stress results are recorded
-after the final validation below.
+The kit's process-driver replay produced **−0.200779582 SOL**, 206 fills across
+53 coins, 103 round trips, 39 winning trips, 2.8033% maximum drawdown, four rejected
+orders, and three failed transactions. All 53 coins satisfy the 0.01 SOL round-trip
+minimum. Two executions produced identical action logs and the L1 regrade
+reproduced byte for byte. Curve fees were 0.356219467 SOL and transaction fees
+0.021945000 SOL; net PnL at double fees was −0.572414704 SOL.
+
+The best three coins made 36% of positive gains. Removing the best coin leaves
+−0.297433620 SOL, and removing the best three leaves approximately −0.41 SOL.
+
+Two active parameter regions were compared using the kit's first three rebuilt
+stress copies, after screening their mean and worst results over multiple failure
+keys. The selected breakout region improved both dev PnL and stress median:
+
+In the final parameter screen, failure keys 1, 19, and 97 gave the selected
+configuration a mean PnL of −0.304468471 SOL and a worst PnL of −0.346447580 SOL.
+The dev failure key's better result therefore is not used as a profitability claim.
+
+| Region | Dev PnL SOL | Fills | Coins | Three-copy stress median SOL | Losing copies |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Mature momentum, 1,500-slot age, 25% target | −0.368733200 | 278 | 56 | −0.682810581 | 3/3 |
+| Sustained breakout, 500-slot age, 20% target | −0.200779582 | 206 | 53 | −0.407665212 | 3/3 |
 
 Broad early momentum, larger winner pyramids, dip buying, wallet following, and
 longer holding variants were screened and rejected. Settings were compared over
 multiple seeded failure keys, including their mean and worst case. No trade
 schedule, mint list, wallet list, or time-specific strategy switch is embedded.
+
+The supplied boothlord and jackxyz72 proxy kits have the **same** dataset SHA-256
+as the real kit: `b661ceee26070f1f07eced009b43dda699e1e96d40a6724c7e72273b1e3715a9`.
+They cannot establish independent cross-window robustness. A separate run using
+the jackxyz72 competition seed returned −0.326732666 SOL, 208 fills, 53 coins,
+and 3.5425% drawdown on that same tape.
+
+The requested positive dev PnL and positive stress median have not been achieved.
+The kit's intended final window is six hours, so 53 qualifying coins in this
+24-hour dev sample also does not guarantee the breadth bar in a shorter window.
+Local execution used Node v24.22.1; the kit reports a server harness on v26.13.1,
+and the process driver records no sandbox image digest. Result hashes therefore
+are not claimed to match the server's. The delivered TypeScript uses the
+Node-22-compatible SDK and erasable types only.
 
 ## Run it
 
